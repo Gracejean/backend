@@ -13,7 +13,7 @@ var user = new Schema({
   }
 
 },
-  { collection: 'account' }
+  { collection: 'users' }
 );
 
 var User = mongoose.model('User', user);
