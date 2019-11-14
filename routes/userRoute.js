@@ -1,11 +1,18 @@
 const express = require('express')
 const app = express.Router()
 var User = require('../model/user')
+var  Property = require('../model/property')
 const jwt = require('jsonwebtoken')
 const sercet = "madam1234"
 
 app.get('/register', (req, res) => {
     var data = new User(req.body)
+    data.save()
+    res.send(data)
+})
+
+app.post('/property', (req, res) => {
+    var data= new Property(req.body)
     data.save()
     res.send(data)
 })
