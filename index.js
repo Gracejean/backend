@@ -11,6 +11,7 @@ app.use(cors())
 app.use(userRoute)
 
 require('./setup/mongo')
+require('./model/property')
 
 
 
