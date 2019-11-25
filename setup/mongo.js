@@ -13,6 +13,6 @@ mongoose.connect(atlas, {
     if (err) {
         console.log("error : " + err);
     } else {
-        console.log("database is connected!");
+        console.log("database is Connected!");
     }
 });
