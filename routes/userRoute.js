@@ -5,21 +5,15 @@ var  Property = require('../model/property')
 const jwt = require('jsonwebtoken')
 const sercet = "madam1234"
 
-app.get('/register', (req, res) => {
-    var data = new User(req.body)
-    data.save()
-    res.send(data)
-})
-
 app.post('/property', (req, res) => {
     var data= new Property(req.body)
     data.save()
     res.send(data)
 })
 
-app.post('/login', (req, res) => {
+app.get('/login', (req, res) => {
     var pass = req.body.password
-    var query = User.findOne({ username: req.body.username })
+    var query = User.findOne({ email: req.body.username })
 
     query.exec(function (err, result) {
         var respass = result.password
@@ -27,7 +21,7 @@ app.post('/login', (req, res) => {
             var token = jwt.sign(req.body, sercet, { expiresIn: "7d" })
             res.send({
                 user: {
-                    username: result.username,
+                    email: result.email,
                     password: result.password
                 },
                 access_token: token
